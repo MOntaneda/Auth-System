@@ -30,7 +30,8 @@ const registerLimiter = rateLimit({
 // ============ RUTAS APLICANDO LOS LIMITADORES ============
 
 // Añadimos verifyTurnstile ANTES del controlador
-router.post('/register', registerLimiter, verifyTurnstile, register);
+//router.post('/register', registerLimiter, verifyTurnstile, register);
+router.post('/register', registerLimiter,  register);
 
 // Aplicamos loginLimiter SOLO a la ruta de login
 router.post('/login', loginLimiter, login);

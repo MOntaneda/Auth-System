@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
 
- const register = useCallback(async (username, email, password, turnstileToken) => {
+ const register = useCallback(async (username, email, password) => {
     const { data } = await api.post('/auth/register', { 
       username, 
       email, 

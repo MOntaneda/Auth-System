@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { Turnstile } from '@marsidev/react-turnstile';
+//import { Turnstile } from '@marsidev/react-turnstile';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import Input from '../../components/common/Input';
@@ -34,8 +34,8 @@ const Register = () => {
       e.confirmPassword = 'Las contraseñas no coinciden';
 
     // Validación del Captcha
-    if (!turnstileToken)
-      e.captcha = 'Debes completar la verificación de seguridad.';
+    /* if (!turnstileToken)
+      e.captcha = 'Debes completar la verificación de seguridad.'; */
 
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -48,7 +48,7 @@ const Register = () => {
     setLoading(true);
     try {
       // Pasamos el token al backend (que debe estar configurado para recibirlo)
-      await register(form.username, form.email, form.password, turnstileToken);
+      await register(form.username, form.email, form.password);
       toast.success('Cuenta creada exitosamente');
       navigate('/dashboard', { replace: true });
     } catch (err) {
@@ -106,7 +106,7 @@ const Register = () => {
           />
           
           {/* Widget de Cloudflare Turnstile */}
-          <div className="flex flex-col items-center py-2">
+         {/*  <div className="flex flex-col items-center py-2">
             <Turnstile
               siteKey={import.meta.env.VITE_TURNSTILE_SITE_KEY}
               onSuccess={(token) => setTurnstileToken(token)}
@@ -114,7 +114,7 @@ const Register = () => {
               onExpire={() => setTurnstileToken(null)}
             />
             {errors.captcha && <p className="text-xs text-red-600 mt-1">{errors.captcha}</p>}
-          </div>
+          </div> */}
 
           <Button type="submit" loading={loading}>Registrarme</Button>
         </form>
