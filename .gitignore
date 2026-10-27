@@ -14,6 +14,7 @@ lerna-debug.log*
 **/dist-ssr/
 *.local
 **/.env         <-- (Te sugiero agregar esta línea si usas variables de entorno)
+**/.env.local
 
 
 # Editor directories and files
